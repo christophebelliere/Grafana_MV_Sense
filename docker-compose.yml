@@ -1,0 +1,60 @@
+version: "2"
+services:
+
+    telegraf:
+        image: telegraf
+        container_name: telegraf
+        hostname: telegraf
+        network_mode: bridge
+        volumes:
+            - "/volume1/docker/telegraf/telegraf.conf:/etc/telegraf/telegraf.conf:ro"
+            - "/proc:/host/proc:ro"
+            - "/usr/share/snmp/mibs:/usr/share/snmp/mibs:ro"
+        ports:
+            - 8125:8125/udp
+            - 8092:8092/udp
+            - 8094:8094
+        restart: unless-stopped
+
+    influxdb:
+        image: influxdb
+        container_name: influxdb
+        hostname: influxdb
+        network_mode: bridge
+        environment:
+            - INFLUXDB_DB=nas_telegraf
+            - INFLUXDB_ADMIN_USER=admin
+            - INFLUXDB_ADMIN_PASSWORD=admin
+            - INFLUXDB_USER=nas_telegraf
+            - INFLUXDB_USER_PASSWORD=nas_telegraf
+            - INFLUXDB_HTTP_AUTH_ENABLED=true
+        volumes:
+            - "/volume1/docker/influxdb/data:/var/lib/influxdb"
+        ports:
+            - 8086:8086
+        restart: unless-stopped
+
+    grafana:
+        image: grafana/grafana
+        container_name: grafana
+        hostname: grafana
+        network_mode: bridge
+        volumes:
+            - "/volume1/docker/grafana/data:/var/lib/grafana"
+        user: "1042"
+        ports:
+            - 3000:3000
+        restart: unless-stopped
+
+
+
+    mosquitto:
+        image: eclipse-mosquitto
+        hostname: mosquitto
+        container_name: mosquitto
+        ports:
+            - "1883:1883"
+            - "9001:9001"
+        volumes:
+            - '/volume1/docker/mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf'
+        network_mode: bridge
