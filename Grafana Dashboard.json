@@ -98,7 +98,7 @@
             {
               "key": "topic",
               "operator": "=",
-              "value": "/merakimv/Q2EV-NWJ9-KPLX/light"
+              "value": "/merakimv/XXXX-XXXX-XXXX/light"
             }
           ]
         }
@@ -551,7 +551,7 @@
             {
               "key": "topic",
               "operator": "=",
-              "value": "/merakimv/Q2EV-NWJ9-KPLX/0"
+              "value": "/merakimv/XXXX-XXXX-XXXX/0"
             }
           ]
         }
@@ -629,7 +629,7 @@
             {
               "key": "topic",
               "operator": "=",
-              "value": "/merakimv/Q2EV-NWJ9-KPLX/654147845875564581"
+              "value": "/merakimv/XXXX-XXXX-XXXX/654147845875564581"
             }
           ]
         }
@@ -756,7 +756,7 @@
             {
               "key": "topic",
               "operator": "=",
-              "value": "/merakimv/Q2EV-NWJ9-KPLX/0"
+              "value": "/merakimv/XXXX-XXXX-XXXX/0"
             }
           ]
         }
